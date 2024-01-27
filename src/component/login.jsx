@@ -10,7 +10,7 @@ const Login = () => {
 
   useEffect(() => {
     // Memeriksa apakah KEYSTORAGE ada di sessionStorage
-    if (sessionStorage.getItem(KEYSTORAGE) !== null) {
+    if (localStorage.getItem(KEYSTORAGE) !== null) {
       // Jika tidak ada, arahkan ke halaman login
       navigate("/");
     }
@@ -37,7 +37,7 @@ const Login = () => {
           },
         ];
         const stringSession = JSON.stringify(session);
-        sessionStorage.setItem(KEYSTORAGE, stringSession);
+        localStorage.setItem(KEYSTORAGE, stringSession);
 
         navigate("/");
       } else {
@@ -48,26 +48,48 @@ const Login = () => {
     }
   };
 
+  const homeStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    padding: "50px",
+    color: "Black",
+    borderRadius: "30px",
+  };
+
+  const inputStyle = {
+    width: "100%",
+    height: "30px",
+    backgroundColor: "black",
+    border: "none",
+    padding: "5px",
+    paddingLeft: "10px",
+    borderRadius: "10px",
+  };
+
   return (
-    <div>
+    <div style={homeStyle}>
       <h2>Login</h2>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
+
+      <input
+        style={inputStyle}
+        placeholder="Username"
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
       <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
+
+      <input
+        style={inputStyle}
+        placeholder="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
       <br />
       <button onClick={handleLogin}>Login</button>

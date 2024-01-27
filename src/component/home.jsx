@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     // Memeriksa apakah KEYSTORAGE ada di sessionStorage
-    if (sessionStorage.getItem(KEYSTORAGE) === null) {
+    if (localStorage.getItem(KEYSTORAGE) === null) {
       // Jika tidak ada, arahkan ke halaman login
       navigate("/login");
     }
